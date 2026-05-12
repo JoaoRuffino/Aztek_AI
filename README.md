@@ -1,6 +1,6 @@
-# 📷 Sistema de Câmera com IA (RTSP + Processamento em Servidor)
+# Sistema de Câmera com IA (RTSP + Processamento em Servidor)
 
-## 📌 Visão Geral
+## Visão Geral
 
 Este projeto consiste em um sistema de captura e processamento de vídeo utilizando Inteligência Artificial.
 
@@ -13,7 +13,7 @@ O fluxo principal é:
 
 ---
 
-## 🧱 Arquitetura
+## Arquitetura
 
 ```
 [Câmera IP]
@@ -31,7 +31,7 @@ O fluxo principal é:
 
 ---
 
-## 📡 Captura de Vídeo (RTSP)
+## Captura de Vídeo (RTSP)
 
 A câmera IP disponibiliza o stream de vídeo através do protocolo **RTSP (Real Time Streaming Protocol)**.
 
@@ -47,7 +47,7 @@ O servidor consome esse canal 0 continuamente para extrair frames. O ideal será
 
 ---
 
-## 🖥️ Processamento no Servidor
+## Processamento no Servidor
 
 O servidor é responsável por:
 
@@ -55,7 +55,7 @@ O servidor é responsável por:
 * Aplicar modelo de Inteligência Artificial (Primeiramente se utilizou modelos prontos YOLO)
 * Gerar stream de saída (Isso está momentâneo pelo menos)
 
-### 🔄 Pipeline de processamento
+### Pipeline de processamento
 Toda essa pipeline foi a princípio feita em um script python:
 
 1. Captura do frame
@@ -64,7 +64,7 @@ Toda essa pipeline foi a princípio feita em um script python:
 4. Pós-processamento (ex: bounding boxes, labels)
 ---
 
-## ⚙️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 * RTSP (streaming de vídeo)
 * Python / OpenCV (captura e processamento)
