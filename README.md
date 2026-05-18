@@ -16,17 +16,24 @@ O fluxo principal é:
 ## Arquitetura
 
 ```
-[Câmera IP]
-     │ (RTSP)
-     ▼
-[Servidor de Processamento]
-     │
-     ├── Captura de frames
-     ├── Processamento com IA
-     └── Retorno de resultados
-[Cliente]
-     │
-     └── Consome resultado via VLC
+                  ┌───────────────── O N V I F / C o n t r o l e ────────────────┐
+                  ▼                                                              │
+   ┌──────────────┐    RTSP     ┌──────────────┐     WebRTC (Direto)     ┌───────┴──────┐
+   │  CÂMERA IP   ├────────────►│ Media Server ├────────────────────────►│   Frontend   │
+   └──────────────┘             └──────┬───────┘                         └───────┬──────┘
+                                       │                                         │
+                             Grava   (Salva fragmentos                         Pede token
+                             Direto   de vídeo)                                  de acesso
+                                       ▼                                         ▼
+                               ┌───────────────┐   Eventos / Metadados   ┌──────────────┐
+                               │    STORAGE    │◄────────────────────────┤   Backend    │
+                               └───────────────┘                         └───────┬──────┘
+                                                                                 │
+                                                                                 ▼
+                                                                         ┌──────────────┐
+                                                                         │  Mensageria  │
+                                                                         │  (RabbitMQ)  │
+                                                                         └──────────────┘
 ```
 
 ---
